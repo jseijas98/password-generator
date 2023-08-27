@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "password-generator-a8f10"
-  }
+  },
+  "targets": {
+    "password-generator-a8f10": {
+      "hosting": {
+        "mi-repo-github": [
+          "https://github.com/jseijas98/password-generator"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
