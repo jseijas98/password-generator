@@ -5,11 +5,13 @@ import { AppComponent } from './app.component';
 import { PasswordGenerateComponent } from './password-generate/password-generate.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ClipboardModule } from '@angular/cdk/clipboard';
+import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PasswordGenerateComponent
+    PasswordGenerateComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
