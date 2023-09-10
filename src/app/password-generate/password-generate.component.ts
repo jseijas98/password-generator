@@ -30,7 +30,7 @@ export class PasswordGenerateComponent implements OnInit {
   copied: boolean = false;
 
   public lengthValues: number = 10; // I
-  public textplaceholder: string = 'CLICK GENERATE PASSWORD';
+  public textplaceholder: string = 'CLICK ON GENERATE PASSWORD';
   public newPassword: string = '';
 
   setPassword() {
@@ -91,10 +91,36 @@ export class PasswordGenerateComponent implements OnInit {
     this.clipboard.copy(this.newPassword);
     setTimeout(() => {
       this.copied = false;
-    }, 2500);
+    }, 3000);
   }
 
   condition(): boolean {
     return this.newPassword !== '';
   }
+
+  fortifyPassword(password: string): string {
+    const uppercaseLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const lowercaseLetters = 'abcdefghijklmnopqrstuvwxyz';
+    const digits = '0123456789';
+    const specialCharacters = '!@#$%^&*()_+[]{}|;:,.<>?';
+
+    const allCharacters = uppercaseLetters + lowercaseLetters + digits + specialCharacters;
+
+    const passwordList = password.split('');
+
+    while (passwordList.length < 12) {
+        const randomCharacter = allCharacters[Math.floor(Math.random() * allCharacters.length)];
+        passwordList.push(randomCharacter);
+    }
+
+    for (let i = passwordList.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [passwordList[i], passwordList[j]] = [passwordList[j], passwordList[i]];
+    }
+
+    const fortifiedPassword = passwordList.join('');
+
+    return fortifiedPassword;
+}
+
 }
